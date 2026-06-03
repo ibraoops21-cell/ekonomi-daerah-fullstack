@@ -3,81 +3,88 @@
 Sistem informasi ekonomi daerah berbasis web untuk input, kelola, dan visualisasi data **PDRB**, **Kemiskinan**, dan **Pengangguran** tingkat kabupaten/kota.
 
 ## 🎯 Fitur Utama
-
 - ✅ Input data manual via form
 - ✅ Upload data via file CSV
-- ✅ CRUD lengkap (Create, Read, Delete)
+- ✅ CRUD lengkap (Create, Read, Update, Delete)
 - ✅ Filter data berdasarkan tahun & kabupaten
 - ✅ Dashboard visualisasi grafik (Chart.js)
 - ✅ REST API dengan Express
 - ✅ Database relasional PostgreSQL dengan Prisma ORM
 
 ## 🛠️ Tech Stack
-
-| Bagian | Teknologi |
-|--------|-----------|
-| Frontend | React 19 + Vite |
-| Styling | Tailwind CSS |
-| HTTP Client | Axios |
-| Charts | Chart.js + react-chartjs-2 |
-| Backend | Node.js + Express |
-| Database | PostgreSQL 17 |
-| ORM | Prisma |
-| CSV Parser | Multer + csv-parser |
+- Frontend: React (Vite)
+- Styling: Tailwind CSS
+- HTTP Client: Axios
+- Charts: Chart.js + react-chartjs-2
+- Backend: Node.js + Express
+- Database: PostgreSQL
+- ORM: Prisma
+- CSV Upload/Parser: Multer + csv-parser
 
 ## 📁 Struktur Project
+- `backend/` → API + Prisma + PostgreSQL
+- `frontend/` → React UI
+- `sample-csv/` → contoh file CSV
 
 ## 🗄️ Skema Database
+- Tabel `pdrb`: `id`, `tahun`, `kabupaten`, `sektor`, `nilai_pdrb`
+- Tabel `kemiskinan`: `id`, `tahun`, `kabupaten`, `jumlah_miskin`, `persentase`
+- Tabel `pengangguran`: `id`, `tahun`, `kabupaten`, `tingkat_tpt`
 
-**Tabel `pdrb`**: id, tahun, kabupaten, sektor, nilai_pdrb
-**Tabel `kemiskinan`**: id, tahun, kabupaten, jumlah_miskin, persentase
-**Tabel `pengangguran`**: id, tahun, kabupaten, tingkat_tpt
-
-## ⚙️ Cara Install & Jalankan
+## ⚙️ Cara Install & Jalankan (Local)
 
 ### Prasyarat
-- Node.js LTS (v18+)
-- PostgreSQL 17
-- Git
+- Node.js LTS
+- PostgreSQL (contoh: v17)
+- Git (opsional)
 
-### 1. Clone Repo
-### 2. Setup Database
-Buka pgAdmin, buat database `ekonomi_daerah`.
+### 1) Setup Database
+Buat database PostgreSQL bernama:
+- `ekonomi_daerah`
 
-### 3. Backend
-Buat `.env`:Backend: **http://localhost:3000**
+Pastikan service PostgreSQL berjalan.
 
-### 4. Frontend (terminal baru)Frontend: **http://localhost:5173**
+### 2) Backend
+Buat file `backend/.env` (lihat contoh di `backend/.env.example`), lalu jalankan:
+cd backend
+npm install
+npx prisma migrate dev
+npm run dev
+Backend berjalan di:
+- http://localhost:3000
+
+### 3) Frontend
+Buka terminal baru, lalu jalankan:
+cd frontend
+npm install
+npm run dev
+Frontend berjalan di:
+- http://localhost:5173  
+  (atau port lain jika 5173 sedang dipakai, mis. 5174)
+
+> Catatan: Jangan upload `backend/.env` ke GitHub. Gunakan `backend/.env.example` sebagai contoh.
 
 ## 📡 Endpoint API
+Base URL:
+- `http://localhost:3000/api`
 
-Base: `http://localhost:3000/api`
+Contoh (pola sama untuk `pdrb`, `kemiskinan`, `pengangguran`):
+- `GET /pdrb` → list data (mendukung query filter sesuai implementasi)
+- `POST /pdrb` → tambah data
+- `PUT /pdrb/:id` → edit data
+- `DELETE /pdrb/:id` → hapus data
+- `POST /pdrb/csv` → upload CSV
 
-| Method | Endpoint | Fungsi |
-|--------|----------|--------|
-| GET | `/pdrb` | List PDRB |
-| POST | `/pdrb` | Tambah PDRB |
-| DELETE | `/pdrb/:id` | Hapus PDRB |
-| POST | `/pdrb/csv` | Upload CSV PDRB |
-| GET | `/kemiskinan` | List Kemiskinan |
-| POST | `/kemiskinan` | Tambah Kemiskinan |
-| DELETE | `/kemiskinan/:id` | Hapus Kemiskinan |
-| POST | `/kemiskinan/csv` | Upload CSV Kemiskinan |
-| GET | `/pengangguran` | List Pengangguran |
-| POST | `/pengangguran` | Tambah Pengangguran |
-| DELETE | `/pengangguran/:id` | Hapus Pengangguran |
-| POST | `/pengangguran/csv` | Upload CSV Pengangguran |
+## 📄 Format CSV (Header Wajib)
+- `pdrb.csv`:
+  - `tahun,kabupaten,sektor,nilai_pdrb`
+- `kemiskinan.csv`:
+  - `tahun,kabupaten,jumlah_miskin,persentase`
+- `pengangguran.csv`:
+  - `tahun,kabupaten,tingkat_tpt`
 
-## 📄 Format CSV
-
-**pdrb.csv:**
-**kemiskinan.csv:**
-**pengangguran.csv:**
 ## 👤 Author
-
-**Ibra Yusazique**
-Project Tugas Mata Kuliah Database Ekonomi Daerah
+Ibra Yusazique — Project tugas “Database Ekonomi Daerah”
 
 ## 📝 License
-
 MIT
