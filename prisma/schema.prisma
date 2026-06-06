@@ -1,0 +1,37 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model PDRB {
+  id         Int    @id @default(autoincrement())
+  tahun      Int
+  kabupaten  String
+  sektor     String
+  nilai_pdrb Float
+
+  @@map("pdrb")
+}
+
+model Kemiskinan {
+  id            Int    @id @default(autoincrement())
+  tahun         Int
+  kabupaten     String
+  jumlah_miskin Int
+  persentase    Float
+
+  @@map("kemiskinan")
+}
+
+model Pengangguran {
+  id          Int    @id @default(autoincrement())
+  tahun       Int
+  kabupaten   String
+  tingkat_tpt Float
+
+  @@map("pengangguran")
+}

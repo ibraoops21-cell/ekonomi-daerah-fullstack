@@ -1,0 +1,25 @@
+{
+  "name": "ekonomi-daerah-fullstack",
+  "version": "1.0.0",
+  "description": "Sistem informasi ekonomi daerah berbasis web untuk input, kelola, dan visualisasi data **PDRB**, **Kemiskinan**, dan **Pengangguran** tingkat kabupaten/kota.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ibraoops21-cell/ekonomi-daerah-fullstack.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ibraoops21-cell/ekonomi-daerah-fullstack/issues"
+  },
+  "homepage": "https://github.com/ibraoops21-cell/ekonomi-daerah-fullstack#readme",
+  "dependencies": {
+    "@prisma/client": "^7.8.0",
+    "prisma": "^7.8.0"
+  }
+}
