@@ -19,7 +19,6 @@
   },
   "homepage": "https://github.com/ibraoops21-cell/ekonomi-daerah-fullstack#readme",
   "dependencies": {
-    "@prisma/client": "^7.8.0",
-    "prisma": "^7.8.0"
-  }
+    "@prisma/client": "6.19.3",
+"prisma": "6.19.3"  }
 }
