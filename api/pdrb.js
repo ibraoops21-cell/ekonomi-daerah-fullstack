@@ -11,7 +11,7 @@ export default async function handler(req, res) {
 
   try {
     if (req.method === "GET") {
-      const data = await prisma.pdrb.findMany({ orderBy: { id: "desc" } });
+      const data = await prisma.pDRB.findMany({ orderBy: { id: "desc" } });
       return res.status(200).json(data);
     }
 
