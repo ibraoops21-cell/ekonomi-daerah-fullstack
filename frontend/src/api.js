@@ -1,7 +1,7 @@
-import axios from "axios";
+﻿import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://net-ton-local-recommendations.trycloudflare.com/api",
+  baseURL: "https://ekonomi-daerah-fullstack-sandy.vercel.app/api",
 });
 
 export default api;
